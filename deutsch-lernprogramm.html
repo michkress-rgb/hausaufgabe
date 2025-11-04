@@ -589,10 +589,90 @@
         <!-- Grade 7 Content -->
         <div id="grade-7" class="activity-section">
             <div class="activity-tabs">
-                <button class="activity-tab active" onclick="showActivity(7, 1)">Tierforschung</button>
+                <button class="activity-tab active" onclick="showActivity(7, 1)">Überlebensgeschichten</button>
+                <button class="activity-tab" onclick="showActivity(7, 2)">Verbübungen</button>
+                <button class="activity-tab" onclick="showActivity(7, 3)">Tierforschung</button>
             </div>
 
+            <!-- Activity 1: Reflection -->
             <div id="grade-7-activity-1" class="activity-content active">
+                <div class="instructions">
+                    <h3>Vertiefende Analyse von Überlebensgeschichten</h3>
+                    <p>Analysiere die Überlebensgeschichten kritisch und vergleiche verschiedene Aspekte. Nutze Beispiele aus "Feuer machen" und den Präsentationen.</p>
+                </div>
+
+                <div class="question-box">
+                    <h3>Vergleiche zwei verschiedene Überlebensgeschichten. Welche Gemeinsamkeiten und Unterschiede in den Überlebensstrategien findest du?</h3>
+                    <textarea id="grade7-reflection-1" placeholder="Schreibe hier deine Analyse..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <h3>Analysiere die Rolle der Psychologie beim Überleben. Wie wichtig ist die mentale Stärke im Vergleich zu praktischen Fähigkeiten?</h3>
+                    <textarea id="grade7-reflection-2" placeholder="Schreibe hier deine Gedanken..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <h3>Welche ethischen Dilemmata können in Überlebenssituationen entstehen? Diskutiere anhand eines Beispiels.</h3>
+                    <textarea id="grade7-reflection-3" placeholder="Schreibe hier deine Gedanken..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <h3>Wie hat sich deine Perspektive auf Überlebenssituationen durch die Präsentationen und Diskussionen verändert?</h3>
+                    <textarea id="grade7-reflection-4" placeholder="Schreibe hier deine Gedanken..."></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-success" onclick="manualSave()">Speichern</button>
+                    <button class="btn btn-primary" onclick="downloadWork(7, 1)">Herunterladen</button>
+                    <button class="btn btn-info" onclick="copyWork(7, 1)">Kopieren</button>
+                    <button class="btn btn-warning" onclick="emailWork(7, 1)">Per E-Mail senden</button>
+                </div>
+            </div>
+
+            <!-- Activity 2: Verb Practice -->
+            <div id="grade-7-activity-2" class="activity-content">
+                <div class="instructions">
+                    <h3>Erweiterte Verbkonjugation</h3>
+                    <p>Übe komplexere Verben und Zeitformen. Achte besonders auf unregelmäßige Verben und schwierige Konstruktionen.</p>
+                </div>
+
+                <div class="verb-game">
+                    <div class="difficulty-selector">
+                        <button class="difficulty-btn active" onclick="setDifficulty(7, 'leicht')">Leicht</button>
+                        <button class="difficulty-btn" onclick="setDifficulty(7, 'mittel')">Mittel</button>
+                        <button class="difficulty-btn" onclick="setDifficulty(7, 'schwer')">Schwer</button>
+                    </div>
+
+                    <div class="stats-panel">
+                        <div class="stat-card">
+                            <h4>Richtige Antworten</h4>
+                            <div class="value" id="grade7-correct">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Falsche Antworten</h4>
+                            <div class="value" id="grade7-incorrect">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Genauigkeit</h4>
+                            <div class="value" id="grade7-accuracy">0%</div>
+                        </div>
+                    </div>
+
+                    <div class="verb-question">
+                        <h3 id="grade7-verb-prompt">Klicke auf "Neue Aufgabe" um zu beginnen!</h3>
+                        <input type="text" class="verb-input" id="grade7-verb-answer" placeholder="Deine Antwort...">
+                        <div class="btn-group" style="justify-content: center; margin-top: 20px;">
+                            <button class="btn btn-primary" onclick="checkVerb(7)">Prüfen</button>
+                            <button class="btn btn-info" onclick="nextVerb(7)">Neue Aufgabe</button>
+                        </div>
+                    </div>
+
+                    <div id="grade7-verb-feedback"></div>
+                </div>
+            </div>
+
+            <!-- Activity 3: Animal Research -->
+            <div id="grade-7-activity-3" class="activity-content">
                 <div class="instructions">
                     <h3>Sehr ungewöhnliche Tiere erforschen</h3>
                     <p>Wähle ein sehr ungewöhnliches Tier und beantworte detaillierte Fragen. Dies erfordert gründlichere Recherche!</p>
@@ -645,10 +725,95 @@
         <!-- Grade 8 Content -->
         <div id="grade-8" class="activity-section">
             <div class="activity-tabs">
-                <button class="activity-tab active" onclick="showActivity(8, 1)">Ausgestorbene Tiere</button>
+                <button class="activity-tab active" onclick="showActivity(8, 1)">Überlebensgeschichten</button>
+                <button class="activity-tab" onclick="showActivity(8, 2)">Verbübungen</button>
+                <button class="activity-tab" onclick="showActivity(8, 3)">Ausgestorbene Tiere</button>
             </div>
 
+            <!-- Activity 1: Reflection -->
             <div id="grade-8-activity-1" class="activity-content active">
+                <div class="instructions">
+                    <h3>Kritische Auseinandersetzung mit Überlebensgeschichten</h3>
+                    <p>Führe eine tiefgehende literarische und philosophische Analyse durch. Verbinde die Geschichten mit größeren Themen der menschlichen Existenz.</p>
+                </div>
+
+                <div class="question-box">
+                    <h3>Analysiere "Feuer machen" von Jack London als naturalistisches Werk. Wie spiegelt die Geschichte die naturalistische Weltanschauung wider?</h3>
+                    <textarea id="grade8-reflection-1" placeholder="Schreibe hier deine literarische Analyse..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <h3>Vergleiche die Darstellung von Mensch und Natur in verschiedenen Überlebensgeschichten. Welche unterschiedlichen philosophischen Perspektiven werden sichtbar?</h3>
+                    <textarea id="grade8-reflection-2" placeholder="Schreibe hier deine Analyse..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <h3>Diskutiere die Symbolik in Überlebensgeschichten. Was repräsentiert das "Feuer" metaphorisch in verschiedenen Kontexten?</h3>
+                    <textarea id="grade8-reflection-3" placeholder="Schreibe hier deine Gedanken..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <h3>Wie haben die Präsentationen dein Verständnis von Erzählperspektive und ihrer Wirkung auf die Darstellung von Überlebenssituationen vertieft?</h3>
+                    <textarea id="grade8-reflection-4" placeholder="Schreibe hier deine Gedanken..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <h3>Welche universellen Wahrheiten über die menschliche Natur lassen sich aus Überlebensgeschichten ableiten? Begründe mit konkreten Textbeispielen.</h3>
+                    <textarea id="grade8-reflection-5" placeholder="Schreibe hier deine Gedanken..."></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-success" onclick="manualSave()">Speichern</button>
+                    <button class="btn btn-primary" onclick="downloadWork(8, 1)">Herunterladen</button>
+                    <button class="btn btn-info" onclick="copyWork(8, 1)">Kopieren</button>
+                    <button class="btn btn-warning" onclick="emailWork(8, 1)">Per E-Mail senden</button>
+                </div>
+            </div>
+
+            <!-- Activity 2: Verb Practice -->
+            <div id="grade-8-activity-2" class="activity-content">
+                <div class="instructions">
+                    <h3>Meisterung der Verbkonjugation</h3>
+                    <p>Beherrsche die komplexesten Verb- und Zeitformen. Fokus auf schwierige unregelmäßige Verben, Konjunktiv und komplexe Konstruktionen.</p>
+                </div>
+
+                <div class="verb-game">
+                    <div class="difficulty-selector">
+                        <button class="difficulty-btn active" onclick="setDifficulty(8, 'leicht')">Leicht</button>
+                        <button class="difficulty-btn" onclick="setDifficulty(8, 'mittel')">Mittel</button>
+                        <button class="difficulty-btn" onclick="setDifficulty(8, 'schwer')">Schwer</button>
+                    </div>
+
+                    <div class="stats-panel">
+                        <div class="stat-card">
+                            <h4>Richtige Antworten</h4>
+                            <div class="value" id="grade8-correct">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Falsche Antworten</h4>
+                            <div class="value" id="grade8-incorrect">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Genauigkeit</h4>
+                            <div class="value" id="grade8-accuracy">0%</div>
+                        </div>
+                    </div>
+
+                    <div class="verb-question">
+                        <h3 id="grade8-verb-prompt">Klicke auf "Neue Aufgabe" um zu beginnen!</h3>
+                        <input type="text" class="verb-input" id="grade8-verb-answer" placeholder="Deine Antwort...">
+                        <div class="btn-group" style="justify-content: center; margin-top: 20px;">
+                            <button class="btn btn-primary" onclick="checkVerb(8)">Prüfen</button>
+                            <button class="btn btn-info" onclick="nextVerb(8)">Neue Aufgabe</button>
+                        </div>
+                    </div>
+
+                    <div id="grade8-verb-feedback"></div>
+                </div>
+            </div>
+
+            <!-- Activity 3: Extinct Animals -->
+            <div id="grade-8-activity-3" class="activity-content">
                 <div class="instructions">
                     <h3>Kürzlich ausgestorbene Tiere erforschen</h3>
                     <p>Wähle ein Tier, das in den letzten 500 Jahren ausgestorben ist, und führe eine umfassende Analyse durch.</p>
@@ -726,8 +891,8 @@
             'Japanischer Seelöwe', 'Falkland-Inselfuchs', 'Goldkröte'
         ];
 
-        // Verb conjugation data
-        const verbs = {
+        // Verb conjugation data - progressively harder by grade
+        const verbsGrade6 = {
             leicht: [
                 { verb: 'sein', person: 'ich', tense: 'Präsens', answer: 'bin' },
                 { verb: 'haben', person: 'du', tense: 'Präsens', answer: 'hast' },
@@ -739,25 +904,97 @@
                 { verb: 'kommen', person: 'er', tense: 'Präsens', answer: 'kommt' }
             ],
             mittel: [
-                { verb: 'laufen', person: 'ich', tense: 'Perfekt', answer: 'bin gelaufen', helper: 'sein' },
-                { verb: 'essen', person: 'du', tense: 'Perfekt', answer: 'hast gegessen', helper: 'haben' },
+                { verb: 'laufen', person: 'ich', tense: 'Perfekt', answer: 'bin gelaufen' },
+                { verb: 'essen', person: 'du', tense: 'Perfekt', answer: 'hast gegessen' },
                 { verb: 'schreiben', person: 'er', tense: 'Präteritum', answer: 'schrieb' },
                 { verb: 'sehen', person: 'wir', tense: 'Präteritum', answer: 'sahen' },
-                { verb: 'sprechen', person: 'ich', tense: 'Perfekt', answer: 'habe gesprochen', helper: 'haben' },
-                { verb: 'fahren', person: 'du', tense: 'Perfekt', answer: 'bist gefahren', helper: 'sein' },
+                { verb: 'sprechen', person: 'ich', tense: 'Perfekt', answer: 'habe gesprochen' },
+                { verb: 'fahren', person: 'du', tense: 'Perfekt', answer: 'bist gefahren' },
                 { verb: 'lesen', person: 'sie', tense: 'Präteritum', answer: 'lasen' },
                 { verb: 'nehmen', person: 'er', tense: 'Präteritum', answer: 'nahm' }
             ],
             schwer: [
-                { verb: 'gehen', person: 'ich', tense: 'Plusquamperfekt', answer: 'war gegangen', helper: 'sein' },
-                { verb: 'machen', person: 'du', tense: 'Futur I', answer: 'wirst machen', helper: 'werden' },
-                { verb: 'sein', person: 'er', tense: 'Futur II', answer: 'wird gewesen sein', helper: 'werden' },
-                { verb: 'schlafen', person: 'wir', tense: 'Plusquamperfekt', answer: 'hatten geschlafen', helper: 'haben' },
-                { verb: 'arbeiten', person: 'sie', tense: 'Futur I', answer: 'werden arbeiten', helper: 'werden' },
-                { verb: 'denken', person: 'ich', tense: 'Plusquamperfekt', answer: 'hatte gedacht', helper: 'haben' },
-                { verb: 'finden', person: 'du', tense: 'Futur II', answer: 'wirst gefunden haben', helper: 'werden' },
-                { verb: 'bringen', person: 'er', tense: 'Plusquamperfekt', answer: 'hatte gebracht', helper: 'haben' }
+                { verb: 'gehen', person: 'ich', tense: 'Plusquamperfekt', answer: 'war gegangen' },
+                { verb: 'machen', person: 'du', tense: 'Futur I', answer: 'wirst machen' },
+                { verb: 'sein', person: 'er', tense: 'Futur II', answer: 'wird gewesen sein' },
+                { verb: 'schlafen', person: 'wir', tense: 'Plusquamperfekt', answer: 'hatten geschlafen' },
+                { verb: 'arbeiten', person: 'sie', tense: 'Futur I', answer: 'werden arbeiten' },
+                { verb: 'denken', person: 'ich', tense: 'Plusquamperfekt', answer: 'hatte gedacht' },
+                { verb: 'finden', person: 'du', tense: 'Futur II', answer: 'wirst gefunden haben' },
+                { verb: 'bringen', person: 'er', tense: 'Plusquamperfekt', answer: 'hatte gebracht' }
             ]
+        };
+
+        const verbsGrade7 = {
+            leicht: [
+                { verb: 'werden', person: 'ich', tense: 'Präsens', answer: 'werde' },
+                { verb: 'können', person: 'du', tense: 'Präsens', answer: 'kannst' },
+                { verb: 'müssen', person: 'er', tense: 'Präsens', answer: 'muss' },
+                { verb: 'wollen', person: 'wir', tense: 'Präsens', answer: 'wollen' },
+                { verb: 'dürfen', person: 'sie', tense: 'Präsens', answer: 'dürfen' },
+                { verb: 'sollen', person: 'ich', tense: 'Präsens', answer: 'soll' },
+                { verb: 'mögen', person: 'du', tense: 'Präsens', answer: 'magst' },
+                { verb: 'wissen', person: 'er', tense: 'Präsens', answer: 'weiß' }
+            ],
+            mittel: [
+                { verb: 'beginnen', person: 'ich', tense: 'Perfekt', answer: 'habe begonnen' },
+                { verb: 'gewinnen', person: 'du', tense: 'Präteritum', answer: 'gewannst' },
+                { verb: 'schwimmen', person: 'er', tense: 'Perfekt', answer: 'ist geschwommen' },
+                { verb: 'helfen', person: 'wir', tense: 'Präteritum', answer: 'halfen' },
+                { verb: 'sterben', person: 'sie', tense: 'Perfekt', answer: 'sind gestorben' },
+                { verb: 'werfen', person: 'ich', tense: 'Präteritum', answer: 'warf' },
+                { verb: 'treffen', person: 'du', tense: 'Perfekt', answer: 'hast getroffen' },
+                { verb: 'bieten', person: 'er', tense: 'Präteritum', answer: 'bot' }
+            ],
+            schwer: [
+                { verb: 'vergessen', person: 'ich', tense: 'Plusquamperfekt', answer: 'hatte vergessen' },
+                { verb: 'verschwinden', person: 'du', tense: 'Futur I', answer: 'wirst verschwinden' },
+                { verb: 'erschrecken', person: 'er', tense: 'Perfekt', answer: 'ist erschrocken' },
+                { verb: 'empfehlen', person: 'wir', tense: 'Plusquamperfekt', answer: 'hatten empfohlen' },
+                { verb: 'befehlen', person: 'sie', tense: 'Futur II', answer: 'werden befohlen haben' },
+                { verb: 'geschehen', person: 'es', tense: 'Plusquamperfekt', answer: 'war geschehen' },
+                { verb: 'gelingen', person: 'es', tense: 'Futur I', answer: 'wird gelingen' },
+                { verb: 'misslingen', person: 'es', tense: 'Perfekt', answer: 'ist misslungen' }
+            ]
+        };
+
+        const verbsGrade8 = {
+            leicht: [
+                { verb: 'erkennen', person: 'ich', tense: 'Präsens', answer: 'erkenne' },
+                { verb: 'verstehen', person: 'du', tense: 'Präteritum', answer: 'verstandest' },
+                { verb: 'bestehen', person: 'er', tense: 'Perfekt', answer: 'hat bestanden' },
+                { verb: 'entstehen', person: 'wir', tense: 'Präteritum', answer: 'entstanden' },
+                { verb: 'beschreiben', person: 'sie', tense: 'Perfekt', answer: 'haben beschrieben' },
+                { verb: 'entscheiden', person: 'ich', tense: 'Präteritum', answer: 'entschied' },
+                { verb: 'verbinden', person: 'du', tense: 'Perfekt', answer: 'hast verbunden' },
+                { verb: 'empfinden', person: 'er', tense: 'Präteritum', answer: 'empfand' }
+            ],
+            mittel: [
+                { verb: 'überweisen', person: 'ich', tense: 'Plusquamperfekt', answer: 'hatte überwiesen' },
+                { verb: 'widersprechen', person: 'du', tense: 'Perfekt', answer: 'hast widersprochen' },
+                { verb: 'zurückkehren', person: 'er', tense: 'Plusquamperfekt', answer: 'war zurückgekehrt' },
+                { verb: 'unterbrechen', person: 'wir', tense: 'Perfekt', answer: 'haben unterbrochen' },
+                { verb: 'vorschlagen', person: 'sie', tense: 'Plusquamperfekt', answer: 'hatten vorgeschlagen' },
+                { verb: 'nachdenken', person: 'ich', tense: 'Perfekt', answer: 'habe nachgedacht' },
+                { verb: 'anziehen', person: 'du', tense: 'Plusquamperfekt', answer: 'hattest angezogen' },
+                { verb: 'aufstehen', person: 'er', tense: 'Perfekt', answer: 'ist aufgestanden' }
+            ],
+            schwer: [
+                { verb: 'sein', person: 'ich', tense: 'Konjunktiv II Präsens', answer: 'wäre' },
+                { verb: 'haben', person: 'du', tense: 'Konjunktiv II Präsens', answer: 'hättest' },
+                { verb: 'können', person: 'er', tense: 'Konjunktiv II Präsens', answer: 'könnte' },
+                { verb: 'müssen', person: 'wir', tense: 'Konjunktiv II Präsens', answer: 'müssten' },
+                { verb: 'gehen', person: 'sie', tense: 'Konjunktiv II Vergangenheit', answer: 'wären gegangen' },
+                { verb: 'machen', person: 'ich', tense: 'Konjunktiv II Vergangenheit', answer: 'hätte gemacht' },
+                { verb: 'werden', person: 'du', tense: 'Konjunktiv II Präsens', answer: 'würdest' },
+                { verb: 'wissen', person: 'er', tense: 'Konjunktiv II Präsens', answer: 'wüsste' }
+            ]
+        };
+
+        const verbs = {
+            6: verbsGrade6,
+            7: verbsGrade7,
+            8: verbsGrade8
         };
 
         let currentGrade = null;
@@ -874,7 +1111,7 @@
 
         function nextVerb(grade) {
             const difficulty = currentDifficulty[grade];
-            const verbList = verbs[difficulty];
+            const verbList = verbs[grade][difficulty];
             const randomVerb = verbList[Math.floor(Math.random() * verbList.length)];
             
             currentVerb[grade] = randomVerb;
@@ -938,6 +1175,10 @@
                     animalQ4: document.getElementById('grade6-animal-q4')?.value || ''
                 },
                 grade7: {
+                    reflection1: document.getElementById('grade7-reflection-1')?.value || '',
+                    reflection2: document.getElementById('grade7-reflection-2')?.value || '',
+                    reflection3: document.getElementById('grade7-reflection-3')?.value || '',
+                    reflection4: document.getElementById('grade7-reflection-4')?.value || '',
                     animalQ1: document.getElementById('grade7-animal-q1')?.value || '',
                     animalQ2: document.getElementById('grade7-animal-q2')?.value || '',
                     animalQ3: document.getElementById('grade7-animal-q3')?.value || '',
@@ -946,6 +1187,11 @@
                     animalQ6: document.getElementById('grade7-animal-q6')?.value || ''
                 },
                 grade8: {
+                    reflection1: document.getElementById('grade8-reflection-1')?.value || '',
+                    reflection2: document.getElementById('grade8-reflection-2')?.value || '',
+                    reflection3: document.getElementById('grade8-reflection-3')?.value || '',
+                    reflection4: document.getElementById('grade8-reflection-4')?.value || '',
+                    reflection5: document.getElementById('grade8-reflection-5')?.value || '',
                     animalQ1: document.getElementById('grade8-animal-q1')?.value || '',
                     animalQ2: document.getElementById('grade8-animal-q2')?.value || '',
                     animalQ3: document.getElementById('grade8-animal-q3')?.value || '',
@@ -1040,6 +1286,16 @@
                 content += 'Wie hat sich dieses Tier an seine Umgebung angepasst?\n';
                 content += document.getElementById('grade6-animal-q4').value + '\n';
             } else if (grade === 7 && activity === 1) {
+                content += 'VERTIEFENDE ANALYSE VON ÜBERLEBENSGESCHICHTEN\n\n';
+                content += 'Vergleiche zwei verschiedene Überlebensgeschichten. Welche Gemeinsamkeiten und Unterschiede in den Überlebensstrategien findest du?\n';
+                content += document.getElementById('grade7-reflection-1').value + '\n\n';
+                content += 'Analysiere die Rolle der Psychologie beim Überleben. Wie wichtig ist die mentale Stärke im Vergleich zu praktischen Fähigkeiten?\n';
+                content += document.getElementById('grade7-reflection-2').value + '\n\n';
+                content += 'Welche ethischen Dilemmata können in Überlebenssituationen entstehen? Diskutiere anhand eines Beispiels.\n';
+                content += document.getElementById('grade7-reflection-3').value + '\n\n';
+                content += 'Wie hat sich deine Perspektive auf Überlebenssituationen durch die Präsentationen und Diskussionen verändert?\n';
+                content += document.getElementById('grade7-reflection-4').value + '\n';
+            } else if (grade === 7 && activity === 3) {
                 content += 'TIERFORSCHUNG (FORTGESCHRITTEN)\n\n';
                 const selectedAnimal = document.querySelector('#grade7-animal-selector .animal-option.selected')?.textContent || 'Nicht ausgewählt';
                 content += `Tier: ${selectedAnimal}\n\n`;
@@ -1056,6 +1312,18 @@
                 content += 'Welche Bedrohungen gibt es für diese Art und wie ist ihr Erhaltungszustand?\n';
                 content += document.getElementById('grade7-animal-q6').value + '\n';
             } else if (grade === 8 && activity === 1) {
+                content += 'KRITISCHE AUSEINANDERSETZUNG MIT ÜBERLEBENSGESCHICHTEN\n\n';
+                content += 'Analysiere "Feuer machen" von Jack London als naturalistisches Werk. Wie spiegelt die Geschichte die naturalistische Weltanschauung wider?\n';
+                content += document.getElementById('grade8-reflection-1').value + '\n\n';
+                content += 'Vergleiche die Darstellung von Mensch und Natur in verschiedenen Überlebensgeschichten. Welche unterschiedlichen philosophischen Perspektiven werden sichtbar?\n';
+                content += document.getElementById('grade8-reflection-2').value + '\n\n';
+                content += 'Diskutiere die Symbolik in Überlebensgeschichten. Was repräsentiert das "Feuer" metaphorisch in verschiedenen Kontexten?\n';
+                content += document.getElementById('grade8-reflection-3').value + '\n\n';
+                content += 'Wie haben die Präsentationen dein Verständnis von Erzählperspektive und ihrer Wirkung auf die Darstellung von Überlebenssituationen vertieft?\n';
+                content += document.getElementById('grade8-reflection-4').value + '\n\n';
+                content += 'Welche universellen Wahrheiten über die menschliche Natur lassen sich aus Überlebensgeschichten ableiten? Begründe mit konkreten Textbeispielen.\n';
+                content += document.getElementById('grade8-reflection-5').value + '\n';
+            } else if (grade === 8 && activity === 3) {
                 content += 'FORSCHUNG ÜBER AUSGESTORBENE TIERE\n\n';
                 const selectedAnimal = document.querySelector('#grade8-animal-selector .animal-option.selected')?.textContent || 'Nicht ausgewählt';
                 content += `Tier: ${selectedAnimal}\n\n`;
