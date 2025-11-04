@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutsch Lernprogramm - Klassen 6-8</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .grade-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .grade-btn {
+            padding: 20px 40px;
+            font-size: 1.3em;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: white;
+        }
+
+        .grade-btn.grade-6 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .grade-btn.grade-7 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .grade-btn.grade-8 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .grade-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .grade-btn.active {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .activity-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .activity-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .activity-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .activity-tab {
+            padding: 15px 25px;
+            background: #e0e7ff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .activity-tab:hover {
+            background: #c7d2fe;
+        }
+
+        .activity-tab.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .activity-content {
+            display: none;
+            background: #f9fafb;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .activity-content.active {
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .question-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-top: 8px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .verb-game {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .difficulty-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .difficulty-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .difficulty-btn:hover {
+            background: #e0e7ff;
+        }
+
+        .difficulty-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .verb-question {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .verb-question h3 {
+            color: #0369a1;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .verb-input {
+            font-size: 1.3em;
+            padding: 15px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e5e7eb;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+
+        .btn-info {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-info:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background: #10b981;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .save-indicator.show {
+            opacity: 1;
+        }
+
+        .animal-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .animal-option {
+            padding: 15px;
+            background: white;
+            border: 3px solid #e5e7eb;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .animal-option:hover {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .animal-option.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .feedback.correct {
+            background: #d1fae5;
+            color: #065f46;
+            border: 2px solid #10b981;
+        }
+
+        .feedback.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 2px solid #ef4444;
+        }
+
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h4 {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .stat-card .value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-top: 8px;
+            background: white;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .instructions {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .instructions h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .instructions p {
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .grade-btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="save-indicator" id="saveIndicator">Automatisch gespeichert</div>
+    
+    <div class="container">
+        <h1>Deutsch Lernprogramm</h1>
+        
+        <div class="grade-selector">
+            <button class="grade-btn grade-6" onclick="selectGrade(6)">Klasse 6</button>
+            <button class="grade-btn grade-7" onclick="selectGrade(7)">Klasse 7</button>
+            <button class="grade-btn grade-8" onclick="selectGrade(8)">Klasse 8</button>
+        </div>
+
+        <!-- Grade 6 Content -->
+        <div id="grade-6" class="activity-section">
+            <div class="activity-tabs">
+                <button class="activity-tab active" onclick="showActivity(6, 1)">Überlebensgeschichten</button>
+                <button class="activity-tab" onclick="showActivity(6, 2)">Verbübungen</button>
+                <button class="activity-tab" onclick="showActivity(6, 3)">Tierforschung</button>
+            </div>
+
+            <!-- Activity 1: Reflection -->
+            <div id="grade-6-activity-1" class="activity-content active">
+                <div class="instructions">
+                    <h3>Reflexion über Überlebensgeschichten</h3>
+                    <p>Denke über die Geschichte "Feuer machen" von Jack London nach und über die Überlebensgeschichten, die wir in den Präsentationen gehört haben. Schreibe deine Gedanken auf.</p>
+                </div>
+
+                <div class="question-box">
+                    <h3>Was ist die wichtigste Erkenntnis aus diesen Geschichten?</h3>
+                    <textarea id="grade6-reflection-1" placeholder="Schreibe hier deine Gedanken..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <h3>Was hast du beim Erstellen deiner eigenen Präsentation gelernt?</h3>
+                    <textarea id="grade6-reflection-2" placeholder="Schreibe hier deine Gedanken..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <h3>Welche Überlebensfähigkeiten sind am wichtigsten?</h3>
+                    <textarea id="grade6-reflection-3" placeholder="Schreibe hier deine Gedanken..."></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-success" onclick="manualSave()">Speichern</button>
+                    <button class="btn btn-primary" onclick="downloadWork(6, 1)">Herunterladen</button>
+                    <button class="btn btn-info" onclick="copyWork(6, 1)">Kopieren</button>
+                    <button class="btn btn-warning" onclick="emailWork(6, 1)">Per E-Mail senden</button>
+                </div>
+            </div>
+
+            <!-- Activity 2: Verb Practice -->
+            <div id="grade-6-activity-2" class="activity-content">
+                <div class="instructions">
+                    <h3>Verbkonjugation üben</h3>
+                    <p>Übe alle sechs Zeitformen: Präsens, Präteritum, Perfekt, Plusquamperfekt, Futur I und Futur II. Wähle deinen Schwierigkeitsgrad!</p>
+                </div>
+
+                <div class="verb-game">
+                    <div class="difficulty-selector">
+                        <button class="difficulty-btn active" onclick="setDifficulty(6, 'leicht')">Leicht</button>
+                        <button class="difficulty-btn" onclick="setDifficulty(6, 'mittel')">Mittel</button>
+                        <button class="difficulty-btn" onclick="setDifficulty(6, 'schwer')">Schwer</button>
+                    </div>
+
+                    <div class="stats-panel">
+                        <div class="stat-card">
+                            <h4>Richtige Antworten</h4>
+                            <div class="value" id="grade6-correct">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Falsche Antworten</h4>
+                            <div class="value" id="grade6-incorrect">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Genauigkeit</h4>
+                            <div class="value" id="grade6-accuracy">0%</div>
+                        </div>
+                    </div>
+
+                    <div class="verb-question">
+                        <h3 id="grade6-verb-prompt">Klicke auf "Neue Aufgabe" um zu beginnen!</h3>
+                        <input type="text" class="verb-input" id="grade6-verb-answer" placeholder="Deine Antwort...">
+                        <div class="btn-group" style="justify-content: center; margin-top: 20px;">
+                            <button class="btn btn-primary" onclick="checkVerb(6)">Prüfen</button>
+                            <button class="btn btn-info" onclick="nextVerb(6)">Neue Aufgabe</button>
+                        </div>
+                    </div>
+
+                    <div id="grade6-verb-feedback"></div>
+                </div>
+            </div>
+
+            <!-- Activity 3: Animal Research -->
+            <div id="grade-6-activity-3" class="activity-content">
+                <div class="instructions">
+                    <h3>Ungewöhnliche Tiere erforschen</h3>
+                    <p>Wähle ein ungewöhnliches Tier aus der Liste und beantworte die Fragen darüber.</p>
+                </div>
+
+                <h3>Wähle ein Tier:</h3>
+                <div class="animal-selector" id="grade6-animal-selector"></div>
+
+                <div id="grade6-animal-questions" style="display:none;">
+                    <div class="question-box">
+                        <h3>Wo lebt dieses Tier?</h3>
+                        <input type="text" id="grade6-animal-q1" placeholder="Deine Antwort...">
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Was frisst es?</h3>
+                        <input type="text" id="grade6-animal-q2" placeholder="Deine Antwort...">
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Was macht dieses Tier besonders oder ungewöhnlich?</h3>
+                        <textarea id="grade6-animal-q3" placeholder="Deine Antwort..." style="min-height: 100px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Wie hat sich dieses Tier an seine Umgebung angepasst?</h3>
+                        <textarea id="grade6-animal-q4" placeholder="Deine Antwort..." style="min-height: 100px;"></textarea>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-success" onclick="manualSave()">Speichern</button>
+                        <button class="btn btn-primary" onclick="downloadWork(6, 3)">Herunterladen</button>
+                        <button class="btn btn-info" onclick="copyWork(6, 3)">Kopieren</button>
+                        <button class="btn btn-warning" onclick="emailWork(6, 3)">Per E-Mail senden</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade 7 Content -->
+        <div id="grade-7" class="activity-section">
+            <div class="activity-tabs">
+                <button class="activity-tab active" onclick="showActivity(7, 1)">Tierforschung</button>
+            </div>
+
+            <div id="grade-7-activity-1" class="activity-content active">
+                <div class="instructions">
+                    <h3>Sehr ungewöhnliche Tiere erforschen</h3>
+                    <p>Wähle ein sehr ungewöhnliches Tier und beantworte detaillierte Fragen. Dies erfordert gründlichere Recherche!</p>
+                </div>
+
+                <h3>Wähle ein Tier:</h3>
+                <div class="animal-selector" id="grade7-animal-selector"></div>
+
+                <div id="grade7-animal-questions" style="display:none;">
+                    <div class="question-box">
+                        <h3>Beschreibe den Lebensraum und das Verbreitungsgebiet dieses Tieres im Detail.</h3>
+                        <textarea id="grade7-animal-q1" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Erkläre die Ernährungsweise und Jagdstrategien (falls Raubtier).</h3>
+                        <textarea id="grade7-animal-q2" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Welche einzigartigen körperlichen oder verhaltensbezogenen Anpassungen hat dieses Tier?</h3>
+                        <textarea id="grade7-animal-q3" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Wie reproduziert sich dieses Tier? Beschreibe den Fortpflanzungszyklus.</h3>
+                        <textarea id="grade7-animal-q4" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Welche Rolle spielt dieses Tier in seinem Ökosystem?</h3>
+                        <textarea id="grade7-animal-q5" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Welche Bedrohungen gibt es für diese Art und wie ist ihr Erhaltungszustand?</h3>
+                        <textarea id="grade7-animal-q6" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-success" onclick="manualSave()">Speichern</button>
+                        <button class="btn btn-primary" onclick="downloadWork(7, 1)">Herunterladen</button>
+                        <button class="btn btn-info" onclick="copyWork(7, 1)">Kopieren</button>
+                        <button class="btn btn-warning" onclick="emailWork(7, 1)">Per E-Mail senden</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade 8 Content -->
+        <div id="grade-8" class="activity-section">
+            <div class="activity-tabs">
+                <button class="activity-tab active" onclick="showActivity(8, 1)">Ausgestorbene Tiere</button>
+            </div>
+
+            <div id="grade-8-activity-1" class="activity-content active">
+                <div class="instructions">
+                    <h3>Kürzlich ausgestorbene Tiere erforschen</h3>
+                    <p>Wähle ein Tier, das in den letzten 500 Jahren ausgestorben ist, und führe eine umfassende Analyse durch.</p>
+                </div>
+
+                <h3>Wähle ein ausgestorbenes Tier:</h3>
+                <div class="animal-selector" id="grade8-animal-selector"></div>
+
+                <div id="grade8-animal-questions" style="display:none;">
+                    <div class="question-box">
+                        <h3>Wann und wo lebte dieses Tier? Beschreibe sein historisches Verbreitungsgebiet.</h3>
+                        <textarea id="grade8-animal-q1" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Wann genau ist diese Art ausgestorben und was waren die Hauptursachen?</h3>
+                        <textarea id="grade8-animal-q2" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Beschreibe die biologischen Eigenschaften und Verhaltensweisen dieses Tieres im Detail.</h3>
+                        <textarea id="grade8-animal-q3" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Welche ökologischen Auswirkungen hatte das Aussterben dieser Art?</h3>
+                        <textarea id="grade8-animal-q4" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Welche menschlichen Aktivitäten trugen zum Aussterben bei?</h3>
+                        <textarea id="grade8-animal-q5" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Gab es Versuche, diese Art zu retten? Was können wir daraus für heutige Artenschutzmaßnahmen lernen?</h3>
+                        <textarea id="grade8-animal-q6" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="question-box">
+                        <h3>Vergleiche dieses Aussterben mit dem aktuellen Artensterben. Welche Parallelen gibt es?</h3>
+                        <textarea id="grade8-animal-q7" placeholder="Deine Antwort..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-success" onclick="manualSave()">Speichern</button>
+                        <button class="btn btn-primary" onclick="downloadWork(8, 1)">Herunterladen</button>
+                        <button class="btn btn-info" onclick="copyWork(8, 1)">Kopieren</button>
+                        <button class="btn btn-warning" onclick="emailWork(8, 1)">Per E-Mail senden</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animal lists
+        const grade6Animals = [
+            'Axolotl', 'Aye-Aye', 'Blobfisch', 'Dumbo-Oktopus', 'Fangschreckenkrebs',
+            'Flughund', 'Gürteltier', 'Nacktmull', 'Quastenflosser', 'Schnabeltier',
+            'Tarsier', 'Beutelwolf-Beuteldachs'
+        ];
+
+        const grade7Animals = [
+            'Bärtierchen', 'Bombardierkäfer', 'Glasfrosch', 'Glühwürmchen',
+            'Hornisse-Tausendfüßer', 'Japanischer Riesensalamander', 'Kakapo',
+            'Kolibri', 'Mantarochen', 'Okapi', 'Pfauenspinne', 'Seedrache',
+            'Sternmull', 'Vampirtintenfisch'
+        ];
+
+        const grade8Animals = [
+            'Dodo', 'Beutelwolf', 'Stellersche Seekuh', 'Riesenalk',
+            'Quagga', 'Balistar', 'Karibik-Mönchsrobbe', 'Wandertaube',
+            'Pyrenäen-Steinbock', 'Schomburgk-Hirsch', 'Atlas-Bär',
+            'Japanischer Seelöwe', 'Falkland-Inselfuchs', 'Goldkröte'
+        ];
+
+        // Verb conjugation data
+        const verbs = {
+            leicht: [
+                { verb: 'sein', person: 'ich', tense: 'Präsens', answer: 'bin' },
+                { verb: 'haben', person: 'du', tense: 'Präsens', answer: 'hast' },
+                { verb: 'machen', person: 'er', tense: 'Präsens', answer: 'macht' },
+                { verb: 'gehen', person: 'wir', tense: 'Präsens', answer: 'gehen' },
+                { verb: 'sein', person: 'ich', tense: 'Präteritum', answer: 'war' },
+                { verb: 'haben', person: 'du', tense: 'Präteritum', answer: 'hattest' },
+                { verb: 'sagen', person: 'sie', tense: 'Präsens', answer: 'sagen' },
+                { verb: 'kommen', person: 'er', tense: 'Präsens', answer: 'kommt' }
+            ],
+            mittel: [
+                { verb: 'laufen', person: 'ich', tense: 'Perfekt', answer: 'bin gelaufen', helper: 'sein' },
+                { verb: 'essen', person: 'du', tense: 'Perfekt', answer: 'hast gegessen', helper: 'haben' },
+                { verb: 'schreiben', person: 'er', tense: 'Präteritum', answer: 'schrieb' },
+                { verb: 'sehen', person: 'wir', tense: 'Präteritum', answer: 'sahen' },
+                { verb: 'sprechen', person: 'ich', tense: 'Perfekt', answer: 'habe gesprochen', helper: 'haben' },
+                { verb: 'fahren', person: 'du', tense: 'Perfekt', answer: 'bist gefahren', helper: 'sein' },
+                { verb: 'lesen', person: 'sie', tense: 'Präteritum', answer: 'lasen' },
+                { verb: 'nehmen', person: 'er', tense: 'Präteritum', answer: 'nahm' }
+            ],
+            schwer: [
+                { verb: 'gehen', person: 'ich', tense: 'Plusquamperfekt', answer: 'war gegangen', helper: 'sein' },
+                { verb: 'machen', person: 'du', tense: 'Futur I', answer: 'wirst machen', helper: 'werden' },
+                { verb: 'sein', person: 'er', tense: 'Futur II', answer: 'wird gewesen sein', helper: 'werden' },
+                { verb: 'schlafen', person: 'wir', tense: 'Plusquamperfekt', answer: 'hatten geschlafen', helper: 'haben' },
+                { verb: 'arbeiten', person: 'sie', tense: 'Futur I', answer: 'werden arbeiten', helper: 'werden' },
+                { verb: 'denken', person: 'ich', tense: 'Plusquamperfekt', answer: 'hatte gedacht', helper: 'haben' },
+                { verb: 'finden', person: 'du', tense: 'Futur II', answer: 'wirst gefunden haben', helper: 'werden' },
+                { verb: 'bringen', person: 'er', tense: 'Plusquamperfekt', answer: 'hatte gebracht', helper: 'haben' }
+            ]
+        };
+
+        let currentGrade = null;
+        let currentDifficulty = { 6: 'leicht', 7: 'leicht', 8: 'leicht' };
+        let verbStats = {
+            6: { correct: 0, incorrect: 0 },
+            7: { correct: 0, incorrect: 0 },
+            8: { correct: 0, incorrect: 0 }
+        };
+        let currentVerb = {};
+        let autoSaveInterval;
+
+        // Initialize
+        window.onload = function() {
+            loadData();
+            initializeAnimals();
+            startAutoSave();
+        };
+
+        // Grade selection
+        function selectGrade(grade) {
+            currentGrade = grade;
+            
+            // Update button states
+            document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show correct section
+            document.querySelectorAll('.activity-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(`grade-${grade}`).classList.add('active');
+            
+            saveData();
+        }
+
+        // Activity switching
+        function showActivity(grade, activityNum) {
+            // Update tab states
+            const tabs = document.querySelectorAll(`#grade-${grade} .activity-tab`);
+            tabs.forEach((tab, index) => {
+                tab.classList.toggle('active', index === activityNum - 1);
+            });
+            
+            // Show correct activity
+            document.querySelectorAll(`#grade-${grade} .activity-content`).forEach((content, index) => {
+                content.classList.toggle('active', index === activityNum - 1);
+            });
+            
+            saveData();
+        }
+
+        // Initialize animal selectors
+        function initializeAnimals() {
+            // Grade 6
+            const grade6Selector = document.getElementById('grade6-animal-selector');
+            grade6Animals.forEach(animal => {
+                const div = document.createElement('div');
+                div.className = 'animal-option';
+                div.textContent = animal;
+                div.onclick = () => selectAnimal(6, animal);
+                grade6Selector.appendChild(div);
+            });
+
+            // Grade 7
+            const grade7Selector = document.getElementById('grade7-animal-selector');
+            grade7Animals.forEach(animal => {
+                const div = document.createElement('div');
+                div.className = 'animal-option';
+                div.textContent = animal;
+                div.onclick = () => selectAnimal(7, animal);
+                grade7Selector.appendChild(div);
+            });
+
+            // Grade 8
+            const grade8Selector = document.getElementById('grade8-animal-selector');
+            grade8Animals.forEach(animal => {
+                const div = document.createElement('div');
+                div.className = 'animal-option';
+                div.textContent = animal;
+                div.onclick = () => selectAnimal(8, animal);
+                grade8Selector.appendChild(div);
+            });
+        }
+
+        function selectAnimal(grade, animal) {
+            // Update selection
+            const selector = document.getElementById(`grade${grade}-animal-selector`);
+            selector.querySelectorAll('.animal-option').forEach(opt => {
+                opt.classList.toggle('selected', opt.textContent === animal);
+            });
+            
+            // Show questions
+            document.getElementById(`grade${grade}-animal-questions`).style.display = 'block';
+            
+            saveData();
+        }
+
+        // Verb practice
+        function setDifficulty(grade, difficulty) {
+            currentDifficulty[grade] = difficulty;
+            
+            // Update button states
+            document.querySelectorAll(`#grade-${grade}-activity-2 .difficulty-btn`).forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === difficulty);
+            });
+            
+            // Reset stats for new difficulty
+            verbStats[grade] = { correct: 0, incorrect: 0 };
+            updateVerbStats(grade);
+            
+            saveData();
+        }
+
+        function nextVerb(grade) {
+            const difficulty = currentDifficulty[grade];
+            const verbList = verbs[difficulty];
+            const randomVerb = verbList[Math.floor(Math.random() * verbList.length)];
+            
+            currentVerb[grade] = randomVerb;
+            
+            const prompt = `Konjugiere "${randomVerb.verb}" in der ${randomVerb.tense} (${randomVerb.person})`;
+            document.getElementById(`grade${grade}-verb-prompt`).textContent = prompt;
+            document.getElementById(`grade${grade}-verb-answer`).value = '';
+            document.getElementById(`grade${grade}-verb-feedback`).innerHTML = '';
+            
+            saveData();
+        }
+
+        function checkVerb(grade) {
+            const userAnswer = document.getElementById(`grade${grade}-verb-answer`).value.trim().toLowerCase();
+            const correctAnswer = currentVerb[grade].answer.toLowerCase();
+            
+            const feedbackDiv = document.getElementById(`grade${grade}-verb-feedback`);
+            
+            if (userAnswer === correctAnswer) {
+                verbStats[grade].correct++;
+                feedbackDiv.innerHTML = '<div class="feedback correct">Richtig! Sehr gut!</div>';
+            } else {
+                verbStats[grade].incorrect++;
+                feedbackDiv.innerHTML = `<div class="feedback incorrect">Nicht ganz. Die richtige Antwort ist: ${currentVerb[grade].answer}</div>`;
+            }
+            
+            updateVerbStats(grade);
+            saveData();
+        }
+
+        function updateVerbStats(grade) {
+            const stats = verbStats[grade];
+            const total = stats.correct + stats.incorrect;
+            const accuracy = total > 0 ? Math.round((stats.correct / total) * 100) : 0;
+            
+            document.getElementById(`grade${grade}-correct`).textContent = stats.correct;
+            document.getElementById(`grade${grade}-incorrect`).textContent = stats.incorrect;
+            document.getElementById(`grade${grade}-accuracy`).textContent = accuracy + '%';
+        }
+
+        // Save functions
+        function startAutoSave() {
+            autoSaveInterval = setInterval(() => {
+                saveData();
+                showSaveIndicator();
+            }, 30000); // Auto-save every 30 seconds
+        }
+
+        function saveData() {
+            const data = {
+                currentGrade,
+                currentDifficulty,
+                verbStats,
+                grade6: {
+                    reflection1: document.getElementById('grade6-reflection-1')?.value || '',
+                    reflection2: document.getElementById('grade6-reflection-2')?.value || '',
+                    reflection3: document.getElementById('grade6-reflection-3')?.value || '',
+                    animalQ1: document.getElementById('grade6-animal-q1')?.value || '',
+                    animalQ2: document.getElementById('grade6-animal-q2')?.value || '',
+                    animalQ3: document.getElementById('grade6-animal-q3')?.value || '',
+                    animalQ4: document.getElementById('grade6-animal-q4')?.value || ''
+                },
+                grade7: {
+                    animalQ1: document.getElementById('grade7-animal-q1')?.value || '',
+                    animalQ2: document.getElementById('grade7-animal-q2')?.value || '',
+                    animalQ3: document.getElementById('grade7-animal-q3')?.value || '',
+                    animalQ4: document.getElementById('grade7-animal-q4')?.value || '',
+                    animalQ5: document.getElementById('grade7-animal-q5')?.value || '',
+                    animalQ6: document.getElementById('grade7-animal-q6')?.value || ''
+                },
+                grade8: {
+                    animalQ1: document.getElementById('grade8-animal-q1')?.value || '',
+                    animalQ2: document.getElementById('grade8-animal-q2')?.value || '',
+                    animalQ3: document.getElementById('grade8-animal-q3')?.value || '',
+                    animalQ4: document.getElementById('grade8-animal-q4')?.value || '',
+                    animalQ5: document.getElementById('grade8-animal-q5')?.value || '',
+                    animalQ6: document.getElementById('grade8-animal-q6')?.value || '',
+                    animalQ7: document.getElementById('grade8-animal-q7')?.value || ''
+                }
+            };
+            
+            localStorage.setItem('deutschLernprogramm', JSON.stringify(data));
+        }
+
+        function loadData() {
+            const saved = localStorage.getItem('deutschLernprogramm');
+            if (!saved) return;
+            
+            const data = JSON.parse(saved);
+            
+            if (data.currentGrade) {
+                currentGrade = data.currentGrade;
+            }
+            
+            currentDifficulty = data.currentDifficulty || currentDifficulty;
+            verbStats = data.verbStats || verbStats;
+            
+            // Load Grade 6 data
+            if (data.grade6) {
+                Object.keys(data.grade6).forEach(key => {
+                    const element = document.getElementById(`grade6-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`);
+                    if (element) element.value = data.grade6[key];
+                });
+            }
+            
+            // Load Grade 7 data
+            if (data.grade7) {
+                Object.keys(data.grade7).forEach(key => {
+                    const element = document.getElementById(`grade7-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`);
+                    if (element) element.value = data.grade7[key];
+                });
+            }
+            
+            // Load Grade 8 data
+            if (data.grade8) {
+                Object.keys(data.grade8).forEach(key => {
+                    const element = document.getElementById(`grade8-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`);
+                    if (element) element.value = data.grade8[key];
+                });
+            }
+            
+            // Update verb stats displays
+            [6, 7, 8].forEach(grade => updateVerbStats(grade));
+        }
+
+        function manualSave() {
+            saveData();
+            showSaveIndicator();
+        }
+
+        function showSaveIndicator() {
+            const indicator = document.getElementById('saveIndicator');
+            indicator.classList.add('show');
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 2000);
+        }
+
+        // Export functions
+        function getWorkContent(grade, activity) {
+            let content = `DEUTSCH LERNPROGRAMM - KLASSE ${grade}\n`;
+            content += `Datum: ${new Date().toLocaleDateString('de-DE')}\n`;
+            content += `${'='.repeat(50)}\n\n`;
+            
+            if (grade === 6 && activity === 1) {
+                content += 'REFLEXION ÜBER ÜBERLEBENSGESCHICHTEN\n\n';
+                content += 'Was ist die wichtigste Erkenntnis aus diesen Geschichten?\n';
+                content += document.getElementById('grade6-reflection-1').value + '\n\n';
+                content += 'Was hast du beim Erstellen deiner eigenen Präsentation gelernt?\n';
+                content += document.getElementById('grade6-reflection-2').value + '\n\n';
+                content += 'Welche Überlebensfähigkeiten sind am wichtigsten?\n';
+                content += document.getElementById('grade6-reflection-3').value + '\n';
+            } else if (grade === 6 && activity === 3) {
+                content += 'TIERFORSCHUNG\n\n';
+                const selectedAnimal = document.querySelector('#grade6-animal-selector .animal-option.selected')?.textContent || 'Nicht ausgewählt';
+                content += `Tier: ${selectedAnimal}\n\n`;
+                content += 'Wo lebt dieses Tier?\n';
+                content += document.getElementById('grade6-animal-q1').value + '\n\n';
+                content += 'Was frisst es?\n';
+                content += document.getElementById('grade6-animal-q2').value + '\n\n';
+                content += 'Was macht dieses Tier besonders oder ungewöhnlich?\n';
+                content += document.getElementById('grade6-animal-q3').value + '\n\n';
+                content += 'Wie hat sich dieses Tier an seine Umgebung angepasst?\n';
+                content += document.getElementById('grade6-animal-q4').value + '\n';
+            } else if (grade === 7 && activity === 1) {
+                content += 'TIERFORSCHUNG (FORTGESCHRITTEN)\n\n';
+                const selectedAnimal = document.querySelector('#grade7-animal-selector .animal-option.selected')?.textContent || 'Nicht ausgewählt';
+                content += `Tier: ${selectedAnimal}\n\n`;
+                content += 'Beschreibe den Lebensraum und das Verbreitungsgebiet dieses Tieres im Detail.\n';
+                content += document.getElementById('grade7-animal-q1').value + '\n\n';
+                content += 'Erkläre die Ernährungsweise und Jagdstrategien (falls Raubtier).\n';
+                content += document.getElementById('grade7-animal-q2').value + '\n\n';
+                content += 'Welche einzigartigen körperlichen oder verhaltensbezogenen Anpassungen hat dieses Tier?\n';
+                content += document.getElementById('grade7-animal-q3').value + '\n\n';
+                content += 'Wie reproduziert sich dieses Tier? Beschreibe den Fortpflanzungszyklus.\n';
+                content += document.getElementById('grade7-animal-q4').value + '\n\n';
+                content += 'Welche Rolle spielt dieses Tier in seinem Ökosystem?\n';
+                content += document.getElementById('grade7-animal-q5').value + '\n\n';
+                content += 'Welche Bedrohungen gibt es für diese Art und wie ist ihr Erhaltungszustand?\n';
+                content += document.getElementById('grade7-animal-q6').value + '\n';
+            } else if (grade === 8 && activity === 1) {
+                content += 'FORSCHUNG ÜBER AUSGESTORBENE TIERE\n\n';
+                const selectedAnimal = document.querySelector('#grade8-animal-selector .animal-option.selected')?.textContent || 'Nicht ausgewählt';
+                content += `Tier: ${selectedAnimal}\n\n`;
+                content += 'Wann und wo lebte dieses Tier? Beschreibe sein historisches Verbreitungsgebiet.\n';
+                content += document.getElementById('grade8-animal-q1').value + '\n\n';
+                content += 'Wann genau ist diese Art ausgestorben und was waren die Hauptursachen?\n';
+                content += document.getElementById('grade8-animal-q2').value + '\n\n';
+                content += 'Beschreibe die biologischen Eigenschaften und Verhaltensweisen dieses Tieres im Detail.\n';
+                content += document.getElementById('grade8-animal-q3').value + '\n\n';
+                content += 'Welche ökologischen Auswirkungen hatte das Aussterben dieser Art?\n';
+                content += document.getElementById('grade8-animal-q4').value + '\n\n';
+                content += 'Welche menschlichen Aktivitäten trugen zum Aussterben bei?\n';
+                content += document.getElementById('grade8-animal-q5').value + '\n\n';
+                content += 'Gab es Versuche, diese Art zu retten? Was können wir daraus für heutige Artenschutzmaßnahmen lernen?\n';
+                content += document.getElementById('grade8-animal-q6').value + '\n\n';
+                content += 'Vergleiche dieses Aussterben mit dem aktuellen Artensterben. Welche Parallelen gibt es?\n';
+                content += document.getElementById('grade8-animal-q7').value + '\n';
+            }
+            
+            return content;
+        }
+
+        function downloadWork(grade, activity) {
+            const content = getWorkContent(grade, activity);
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Klasse_${grade}_Arbeit_${new Date().toISOString().split('T')[0]}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function copyWork(grade, activity) {
+            const content = getWorkContent(grade, activity);
+            navigator.clipboard.writeText(content).then(() => {
+                alert('Arbeit in die Zwischenablage kopiert!');
+            });
+        }
+
+        function emailWork(grade, activity) {
+            const content = getWorkContent(grade, activity);
+            const subject = `Deutsch Lernprogramm - Klasse ${grade}`;
+            const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(content)}`;
+            window.location.href = mailtoLink;
+        }
+
+        // Add event listeners to all inputs for auto-save
+        document.addEventListener('input', () => {
+            clearTimeout(window.inputTimeout);
+            window.inputTimeout = setTimeout(() => {
+                saveData();
+            }, 1000);
+        });
+
+        // Reminder to save before closing
+        window.addEventListener('beforeunload', (e) => {
+            saveData();
+            e.preventDefault();
+            e.returnValue = 'Möchtest du wirklich gehen? Stelle sicher, dass deine Arbeit gespeichert ist!';
+        });
+    </script>
+</body>
+</html>
